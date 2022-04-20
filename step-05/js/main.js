@@ -15,18 +15,18 @@ var pcConfig = {
     },
   ],
 };
-
 // Set up audio and video regardless of what devices are present.
 var sdpConstraints = {
   offerToReceiveAudio: true,
   offerToReceiveVideo: true,
 };
 
+console.log();
 /////////////////////////////////////////////
 
 // var room = 'foo';
 // Could prompt for room name:
-room = prompt('Enter room name:');
+window.room = prompt('Enter room name:');
 
 var socket = io.connect();
 
@@ -94,13 +94,14 @@ socket.on('message', function (message) {
 
 var localVideo = document.querySelector('#localVideo');
 var remoteVideo = document.querySelector('#remoteVideo');
-
 navigator.mediaDevices
   .getUserMedia({
-    audio: false,
+    audio: true,
     video: true,
   })
-  .then(gotStream)
+  .then(function (stream) {
+    gotStream(stream);
+  })
   .catch(function (e) {
     alert('getUserMedia() error: ' + e.name);
   });
@@ -117,6 +118,7 @@ function gotStream(stream) {
 
 var constraints = {
   video: true,
+  audio: true,
 };
 
 console.log('Getting user media with constraints', constraints);

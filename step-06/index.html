@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Realtime communication with WebRTC</title>
 
-<head>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
 
-  <title>Realtime communication with WebRTC</title>
+  <body>
+    <h1>Realtime communication with WebRTC</h1>
 
-  <link rel="stylesheet" href="/css/main.css" />
+    <div id="videoCanvas">
+      <video id="camera" autoplay playsinline></video>
+      <canvas id="photo"></canvas>
+    </div>
 
-</head>
+    <div id="buttons">
+      <button id="snap">Snap</button><span> then </span
+      ><button id="send">Send</button>
+      <span> or </span>
+      <button id="snapAndSend">Snap &amp; Send</button>
+    </div>
 
-<body>
+    <div id="incoming">
+      <h2>Incoming photos</h2>
+      <div id="trail"></div>
+    </div>
 
-  <h1>Realtime communication with WebRTC</h1>
-
-  <div id="videoCanvas">
-    <video id="camera" autoplay playsinline></video>
-    <canvas id="photo"></canvas>
-  </div>
-
-  <div id="buttons">
-    <button id="snap">Snap</button><span> then </span><button id="send">Send</button>
-    <span> or </span>
-    <button id="snapAndSend">Snap &amp; Send</button>
-  </div>
-
-  <div id="incoming">
-    <h2>Incoming photos</h2>
-    <div id="trail"></div>
-  </div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-  <script src="js/main.js"></script>
-
-</body>
-
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
 </html>
